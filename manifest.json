@@ -1,0 +1,11 @@
+{
+  "name": "Weekly Planner",
+  "short_name": "Weekly",
+  "description": "Weekly todo planner with recurring tasks and reminders",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#e4d9cc",
+  "theme_color": "#b89478",
+  "orientation": "portrait",
+  "icons": []
+}
