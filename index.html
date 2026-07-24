@@ -45,6 +45,7 @@ body {
   --modal-bg: #fffcfd; --input-bg: #f4e3e8; --input-border: #dcbac4;
   --divider: #efd9e0; --focus-accent: #d4808a;
   --shadow: 0 2px 12px rgba(73,54,62,.08); --shadow-sm: 0 1px 3px rgba(73,54,62,.04);
+  --overlay: rgba(73,54,62,.48);
 }
 /* 2. Matcha */
 [data-theme="matcha"] {
@@ -56,6 +57,7 @@ body {
   --modal-bg: #fdfefc; --input-bg: #e4eada; --input-border: #c2ccb8;
   --divider: #e0e6d7; --focus-accent: #7d9a6e;
   --shadow: 0 2px 12px rgba(58,66,53,.08); --shadow-sm: 0 1px 3px rgba(58,66,53,.04);
+  --overlay: rgba(58,66,53,.48);
 }
 /* 3. Lavender */
 [data-theme="lavender"] {
@@ -67,6 +69,7 @@ body {
   --modal-bg: #fefcfe; --input-bg: #eae0f0; --input-border: #cabad6;
   --divider: #e6dbec; --focus-accent: #9b82b8;
   --shadow: 0 2px 12px rgba(60,53,68,.08); --shadow-sm: 0 1px 3px rgba(60,53,68,.04);
+  --overlay: rgba(60,53,68,.48);
 }
 /* 4. Peach */
 [data-theme="peach"] {
@@ -78,6 +81,7 @@ body {
   --modal-bg: #fffcf9; --input-bg: #f2e0d2; --input-border: #d6baa6;
   --divider: #ead9cc; --focus-accent: #e09872;
   --shadow: 0 2px 12px rgba(72,58,50,.08); --shadow-sm: 0 1px 3px rgba(72,58,50,.04);
+  --overlay: rgba(72,58,50,.48);
 }
 /* 5. Ocean */
 [data-theme="ocean"] {
@@ -89,6 +93,7 @@ body {
   --modal-bg: #fcfdfe; --input-bg: #dce4ec; --input-border: #bac4d4;
   --divider: #d8e0e8; --focus-accent: #6a96b0;
   --shadow: 0 2px 12px rgba(54,62,72,.08); --shadow-sm: 0 1px 3px rgba(54,62,72,.04);
+  --overlay: rgba(54,62,72,.48);
 }
 /* 6. Sunflower */
 [data-theme="sunflower"] {
@@ -100,6 +105,7 @@ body {
   --modal-bg: #fffefb; --input-bg: #f2e8d0; --input-border: #d6c8a6;
   --divider: #eadfc6; --focus-accent: #d4b850;
   --shadow: 0 2px 12px rgba(71,66,52,.08); --shadow-sm: 0 1px 3px rgba(71,66,52,.04);
+  --overlay: rgba(71,66,52,.48);
 }
 /* 7. Mint */
 [data-theme="mint"] {
@@ -111,6 +117,7 @@ body {
   --modal-bg: #fcfefd; --input-bg: #dae8de; --input-border: #b8ccbe;
   --divider: #d6e2d9; --focus-accent: #6ea88c;
   --shadow: 0 2px 12px rgba(54,69,62,.08); --shadow-sm: 0 1px 3px rgba(54,69,62,.04);
+  --overlay: rgba(54,69,62,.48);
 }
 /* 8. Sunset */
 [data-theme="sunset"] {
@@ -122,6 +129,7 @@ body {
   --modal-bg: #fffcfb; --input-bg: #f2dcd4; --input-border: #d6b8aa;
   --divider: #ead4cc; --focus-accent: #d87862;
   --shadow: 0 2px 12px rgba(72,57,52,.08); --shadow-sm: 0 1px 3px rgba(72,57,52,.04);
+  --overlay: rgba(72,57,52,.48);
 }
 /* 9. Sky */
 [data-theme="sky"] {
@@ -133,6 +141,7 @@ body {
   --modal-bg: #fcfdfe; --input-bg: #dae4ee; --input-border: #b8c4d6;
   --divider: #d6e0ea; --focus-accent: #72a4cc;
   --shadow: 0 2px 12px rgba(54,66,78,.08); --shadow-sm: 0 1px 3px rgba(54,66,78,.04);
+  --overlay: rgba(54,66,78,.48);
 }
 /* 10. Latte */
 [data-theme="latte"] {
@@ -144,8 +153,8 @@ body {
   --modal-bg: #fefdfa; --input-bg: #eae0d2; --input-border: #cebeac;
   --divider: #e6dbcc; --focus-accent: #b89478;
   --shadow: 0 2px 12px rgba(60,54,48,.08); --shadow-sm: 0 1px 3px rgba(60,54,48,.04);
+  --overlay: rgba(60,54,48,.48);
 }
-
 /* ===== Header ===== */
 .header {
   display: flex; align-items: center; padding: 18px 16px 6px;
@@ -170,6 +179,15 @@ body {
   transition: all .2s;
 }
 .settings-btn:active{background:var(--chip-bg);color:var(--text)}
+
+.today-btn {
+  width: 36px; height: 36px; border-radius: 50%; border: none;
+  background: var(--accent); color: #fff;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .2s; font-family: inherit;
+}
+.today-btn:active{transform:scale(.88);opacity:.8}
 
 /* ===== Chip Bar ===== */
 .chip-bar {
@@ -291,10 +309,10 @@ body {
 
 /* ===== Modal ===== */
 .modal-overlay {
-  position: fixed; inset: 0; background: rgba(0,0,0,.35);
+  position: fixed; inset: 0; background: var(--overlay);
   z-index: 100; display: flex; align-items: flex-end; justify-content: center;
   animation: fadeIn .2s;
-  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
 }
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
@@ -311,31 +329,41 @@ body {
   text-align: center; margin-bottom: 20px; transition: color .5s;
 }
 
-.field{margin-bottom:16px}
+.field{margin-bottom:14px}
+.field:last-child{margin-bottom:0}
 .field label{
   display:block;font-size:11px;font-weight:700;color:var(--text2);
   margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;
 }
 .field input,.field select{
-  width:100%;padding:13px 14px;background:var(--input-bg);
-  border:1.5px solid var(--input-border);border-radius:12px;
+  width:100%;padding:13px 14px;background:var(--card);
+  border:1.5px solid var(--border);border-radius:12px;
   color:var(--text);font-size:16px;outline:none;font-family:inherit;
   transition:all .2s;-webkit-appearance:none;
 }
 .field input:focus,.field select:focus{border-color:var(--accent)}
 .field select{cursor:pointer}
-.field input[readonly]{opacity:.55;cursor:default}
+.field input[readonly]{opacity:.5;cursor:default}
 
-.field-row{display:flex;gap:10px;margin-bottom:16px}
+.field-row{display:flex;gap:10px}
 .field-row .field{flex:1;margin-bottom:0}
 
-.reminders-section{margin-bottom:16px}
+.modal-section{
+  background:var(--input-bg);
+  border-radius:14px;
+  padding:16px;
+  margin-bottom:14px;
+  border:1px solid var(--input-border);
+}
+.modal-section .field-row{margin-bottom:0}
+
+.reminders-section{margin-bottom:0}
 .reminders-section .section-label{
   font-size:11px;font-weight:700;color:var(--text2);
-  margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px;
+  margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px;
 }
 .reminder-option{
-  display:flex;align-items:center;gap:10px;padding:11px 4px;
+  display:flex;align-items:center;gap:10px;padding:10px 4px;
   cursor:pointer;border-bottom:1px solid var(--divider);transition:background .15s;
 }
 .reminder-option:last-child{border-bottom:none}
@@ -358,10 +386,6 @@ body {
 .btn-primary:active{opacity:.85}
 .btn-secondary{background:var(--input-bg);color:var(--text)}
 .btn-secondary:active{opacity:.7}
-
-.time-hint {
-  font-size: 10px; color: var(--text2); margin-top: 4px;
-}
 
 /* ===== Settings ===== */
 .setting-row{
@@ -423,6 +447,7 @@ body {
       <span class="month-title" id="monthTitle"></span>
     </div>
     <button class="nav-arrow" onclick="changeMonth(1)" aria-label="下個月">▶</button>
+    <button class="today-btn" id="todayBtn" onclick="goToday()" aria-label="返回今日"></button>
     <button class="settings-btn" onclick="openSettings()" aria-label="設定">⚙</button>
   </div>
   <div class="chip-bar" id="chipBar"></div>
@@ -435,7 +460,7 @@ body {
 
 <script>
 // === Constants ===
-const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const DAYS=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
 const MO=['January','February','March','April','May','June','July','August','September','October','November','December'];
 const RO=[{v:'none',l:'不重複'},{v:'daily',l:'每日'},{v:'weekly',l:'每週'},{v:'weekdays',l:'工作日'},{v:'monthly',l:'每月'}];
 const RMO=[{v:'5min',l:'提前 5 分鐘'},{v:'15min',l:'提前 15 分鐘'},{v:'1hour',l:'提前 1 小時'},{v:'1day',l:'提前 1 日'}];
@@ -544,6 +569,7 @@ function wksInMonth(y,m){
 function render(){
   const wn=isoWeek(selWeekStart);
   document.getElementById('monthTitle').textContent=MO[curMonth.getMonth()]+' '+curMonth.getFullYear()+'  W'+wn;
+  document.getElementById('todayBtn').textContent=new Date().getDate();
 
   const wks=wksInMonth(curMonth.getFullYear(),curMonth.getMonth());
   const cb=document.getElementById('chipBar');cb.innerHTML='';
@@ -650,17 +676,22 @@ function buildModal(title,name,dateVal,timeVal,repeatVal,reminders){
   const dateShow=dateVal&&dateVal!=='__focus__'?dateVal:new Date().toISOString().slice(0,10);
   document.getElementById('modalContent').innerHTML=`
     <div class="modal-title">${title}</div>
-    <div class="field"><label>事項名稱</label><input type="text" id="todoName" placeholder="輸入事項..." value="${esc(name)}" autofocus></div>
-    <div class="field"><label>日期</label><input type="date" id="todoDate" value="${dateShow}" ${dateReadonly}></div>
-    <div class="field-row">
-      <div class="field">
-        <label>時間 (24小時制)</label>
-        <input type="text" id="todoTime" placeholder="例如 14:30" value="${esc(timeVal)}" maxlength="5" inputmode="numeric" autocomplete="off" oninput="fmtTime(this)">
-        <div class="time-hint">格式：00:00 - 23:59</div>
-      </div>
-      <div class="field"><label>重複</label><select id="todoRepeat">${RO.map(r=>`<option value="${r.v}"${r.v===repeatVal?' selected':''}>${r.l}</option>`).join('')}</select></div>
+    <div class="modal-section">
+      <div class="field"><label>事項名稱</label><input type="text" id="todoName" placeholder="輸入事項..." value="${esc(name)}" autofocus></div>
+      <div class="field"><label>日期</label><input type="date" id="todoDate" value="${dateShow}" ${dateReadonly}></div>
     </div>
-    <div class="reminders-section"><div class="section-label">進階提醒</div>${ropts}</div>
+    <div class="modal-section">
+      <div class="field-row">
+        <div class="field">
+          <label>時間 (24小時制)</label>
+          <input type="text" id="todoTime" placeholder="14:30" value="${esc(timeVal)}" maxlength="5" inputmode="numeric" autocomplete="off" oninput="fmtTime(this)">
+        </div>
+        <div class="field"><label>重複</label><select id="todoRepeat">${RO.map(r=>`<option value="${r.v}"${r.v===repeatVal?' selected':''}>${r.l}</option>`).join('')}</select></div>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="reminders-section"><div class="section-label">進階提醒</div>${ropts}</div>
+    </div>
     <div class="modal-actions">
       <button class="btn btn-secondary" id="btnCancel">取消</button>
       <button class="btn btn-primary" id="btnSave">儲存</button>
@@ -725,6 +756,12 @@ function changeMonth(dir){
   curMonth.setMonth(curMonth.getMonth()+dir);
   const wks=wksInMonth(curMonth.getFullYear(),curMonth.getMonth());
   if(wks.length>0)selWeekStart=new Date(wks[0].start);
+  render();
+}
+function goToday(){
+  const today=new Date();
+  curMonth=new Date(today.getFullYear(),today.getMonth(),1);
+  selWeekStart=mon(today);
   render();
 }
 
